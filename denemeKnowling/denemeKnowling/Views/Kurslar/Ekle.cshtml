@@ -1,0 +1,63 @@
+﻿@model CreateViewKurs;
+<div class="container shadow p-5">
+
+    <form method="post" class="form-floating" enctype="multipart/form-data">
+        <!-- Eylemin adını buraya ekleyin -->
+        <div class="mb-3">
+            <label class="form-label" asp-for="Adı">Adı</label>
+            <input type="text" class="form-control" asp-for="Adı" placeholder="Kurs Adı Giriniz">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Açıklaması">Açıklama</label>
+            <input type="text" class="form-control" asp-for="Açıklaması" placeholder="Kurs Açıklaması Giriniz">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Kategorisi" class="form-label">Kategori Seçiniz</label>
+            <select class="form-select" asp-for="Kategorisi">
+                <option value="Grafik">Grafik</option>
+                <option value="Yazılım">Yazılım</option>
+                <option value="Spor">Spor</option>
+                <option value="Kariyer">Kariyer</option>
+                <option value="Finans">Finans</option>
+                <option value="Kişisel Gelişim">Kişisel Gelişim</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Fiyatı">Fiyat</label>
+            <input type="text" class="form-control" asp-for="Fiyatı" placeholder="Kurs Fiyatı Giriniz">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Süresi">Süre</label>
+            <input type="text" class="form-control" asp-for="Süresi" placeholder="Kurs Süresi Giriniz">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Öğretmeni">Öğretmen</label>
+            <input type="text" class="form-control" asp-for="Öğretmeni" placeholder="Kurs Öğretmeni Giriniz">
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="file" class="form-control custom-file-input" asp-for="Photo" placeholder="Ürün fotoğrafını seçiniz." />
+            <label asp-for="Photo" class="custom-file-label">Photo</label>
+            <span asp-validation-for="Photo" class="alert-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+
+        @section Scripts {
+            <script>
+                $(document).ready(function () {
+                    $('.custom-file-input').on("change", function () {
+                        var fileName = $(this).val().split("\\").pop();
+                        $(this).next('.custom-file-label').html(fileName);
+                    });
+                });
+            </script>
+        }
+    </form>
+</div>

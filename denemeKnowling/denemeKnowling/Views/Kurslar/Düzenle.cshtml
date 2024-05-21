@@ -1,0 +1,76 @@
+﻿@model CreateViewKurs
+
+@{
+    ViewData["Title"] = "Düzenle Kurs";
+    var photoPath = "~/images/" + Model.PhotoFileName;
+}
+
+<div class="container shadow p-5">
+    <form method="post" class="form-floating" enctype="multipart/form-data">
+        <input asp-for="Id" hidden />
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Adı">Adı</label>
+            <input type="text" class="form-control" asp-for="Adı" placeholder="Kurs Adını Giriniz">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Açıklaması">Açıklama</label>
+            <input type="text" class="form-control" asp-for="Açıklaması" placeholder="Kurs Açıklaması Giriniz">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Kategorisi" class="form-label">Kategori Seçiniz</label>
+            <select class="form-select" asp-for="Kategorisi">
+                <option value="Grafik">Grafik</option>
+                <option value="Yazılım">Yazılım</option>
+                <option value="Spor">Spor</option>
+                <option value="Kariyer">Kariyer</option>
+                <option value="Finans">Finans</option>
+                <option value="Kişisel Gelişim">Kişisel Gelişim</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Fiyatı">Fiyat</label>
+            <input type="text" class="form-control" asp-for="Fiyatı" placeholder="Kurs Fiyatı Giriniz">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Süresi">Süre</label>
+            <input type="text" class="form-control" asp-for="Süresi" placeholder="Kurs Süresi Giriniz">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Öğretmeni">Öğretmen</label>
+            <input type="text" class="form-control" asp-for="Öğretmeni" placeholder="Kurs Öğretmeni Giriniz">
+        </div>
+
+
+
+
+        <div class="form-floating mb-3">
+            <label asp-for="PhotoFileName" class="custom-file-label" hidden>@Model.PhotoFileName</label>
+        </div>
+        <div class="card-body text-center">
+            <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="file" class="form-control  custom-file-input" asp-for="Photo" placeholder="Ürün fotoğrafını seçiniz." />
+            <label asp-for="Photo" class="custom-file-label">Photo</label>
+            <span asp-validation-for="Photo" class="alert-danger"></span>
+        </div>
+
+
+        <button class="btn btn-success" type="submit">Güncelle</button>
+    </form>
+
+    <form class="form-floating mt-3" method="post" asp-action="SilKurs">
+        <input asp-for="Id" hidden />
+
+        <button class="btn btn-danger" type="submit"><i class="bi bi-x-circle-fill"></i> Sil</button>
+    </form>
+
+    <a asp-action="Index" class="btn btn-secondary mt-3">Geri Dön</a>
+</div>

@@ -1,0 +1,42 @@
+﻿
+@model denemeKnowling.Models.Kurs
+
+
+@{
+    ViewData["Title"] = "Görüntüe Kurs";
+}
+
+<div class="container shadow p-5">
+    <h1 class="text-center"><b>Kurs Bilgi</b></h1>
+
+@*  @foreach (var x in Model)
+    { 
+       var photoPath = "~/images/" + (@Model.PhotoPath ?? "noimage.jpg"); *@
+        <div class="card shadow p-3">
+            <div class="card-body">
+
+            @*    <!-- Resim ekleme kısmı -->
+                <div class="card-body text-center">
+                    <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+                </div>  *@
+<div style="margin:auto ">
+            <video id="videoplayer" src="@Url.Content("~/videos/yucedag.mp4")" controls width="900" height="450" loop/>
+            </div>
+               <a><h4 class="card-title text-center">@Model.Adı</h4></a>
+                <hr />
+            <div class="card-text"><strong>Açıklaması: </strong>@Model.Açıklaması</div>
+                <hr />
+            <div class="card-text"><strong>Kategorisi: </strong>Model.Kategorisi</div>
+                <hr />
+            <div class="card-text"><strong>Öğretmeni: </strong>@Model.Öğretmeni</div>
+                <hr />
+            <div class="card-text"><strong>Süresi: </strong>@Model.Süresi</div>
+                <hr />
+            <h6 class="card-text"><strong>Fiyat: </strong>@Model.Fiyatı</h6>
+            </div>
+        </div>
+        <br />
+    
+    <a href="/Kurslar/Index" class="btn btn-dark">Geri Dön</a>
+</div>
+ 
